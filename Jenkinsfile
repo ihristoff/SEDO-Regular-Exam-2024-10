@@ -2,21 +2,17 @@ pipeline {
     agent any 
 
     stages {
-        stage('Checkout Repo') {
-            steps {
-                git 'https://github.com/ihristoff/SEDO-Regular-Exam-2024-10.git'
-            }
-        }
+     
 
-        stage('Restore') {
+        stage('Restore dependencies') {
             steps {
                 bat 'dotnet restore'
             }
         }
 
-        stage('Build') {
+        stage('Dotnet Build') {
             steps {
-                bat 'dotnet build --no restore'
+                bat 'dotnet build --no-restore'
             }
         }
 
