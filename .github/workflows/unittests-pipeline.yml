@@ -10,7 +10,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout Repo
+      uses: actions/checkout@v4
     - name: Setup .NET 6.0
       uses: actions/setup-dotnet@v4
       with:
@@ -18,6 +19,6 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Build Solution for UnitTests
-      run: dotnet build \HouseRentingSystem.UnitTests --no-restore
+      run: dotnet build--no-restore
     - name: Test UnitTest
-      run: dotnet test \HouseRentingSystem.UnitTests\HouseRentingSystem.UnitTests.csproj --no-build --verbosity normal
+      run: dotnet test HouseRentingSystem.UnitTests/HouseRentingSystem.UnitTests.csproj --no-build --verbosity normal
