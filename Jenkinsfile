@@ -3,19 +3,19 @@ pipeline {
 
     stages {
       
-        stage('Restore') {
+        stage('Restore dependencies') {
             steps {
                 bat 'dotnet restore'
             }
         }
 
-        stage('Build') {
+        stage('Dotnet Build') {
             steps {
-                bat 'dotnet build --no restore'
+                bat 'dotnet build --no-restore'
             }
         }
 
-        stage('Run Unit and Integration Tests') {
+        stage('Execute Unit and Integration Tests') {
             steps {
                 bat 'dotnet test HouseRentingSystem.UnitTests/HouseRentingSystem.UnitTests.csproj --no-build --verbosity normal'
                 bat 'dotnet test HouseRentingSystem.Tests/HouseRentingSystem.Tests.csproj --no-build --verbosity normal'
